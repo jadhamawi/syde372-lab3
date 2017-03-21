@@ -38,10 +38,11 @@ K=10;
 
 [centroids, labels, prototypes] = unlabelled_clustering(f32, K);
 
-%figure, aplot(f32);
-figure, scatter(f32(1,:),f32(2,:));
+figure, aplot(f32);
+
 hold on
 scatter(centroids(:,1),centroids(:,2),50,'filled');
+xlabel('x1'),ylabel('x2')
 title('custom kmeans');
 
 %% using built-in algorithm with initialization as custom kmeans (validation)
@@ -51,5 +52,15 @@ dat = f32(1:2,:)';
 figure, scatter(dat(:,1),dat(:,2))
 hold on
 scatter(C(:,1),C(:,2),50,'filled')
+xlabel('x1'),ylabel('x2')
 title('Using built-in kmeans');
+
+%% fuzzy k-means
+
+[centers, u, obj_fun] = fcm(dat,10);
+figure, scatter(dat(:,1),dat(:,2))
+hold on
+scatter(centers(:,1),centers(:,2),50,'filled')
+title('Fuzzy c-means clustering')
+
 

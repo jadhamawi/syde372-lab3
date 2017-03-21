@@ -66,4 +66,15 @@ function [centroids, labels, prototypes] = unlabelled_clustering(dat, num_classe
     
 %     figure,scatter(dat(1,:),dat(2,:))
 %     hold on, scatter(new_centroids(:,1),new_centroids(:,2),40,'x')
+    
+    figure
+    
+    for i = 1:num_classes
+        scatter(dat(1,dat(3,:)==i), dat(2,dat(3,:)==i));
+        hold on
+    end
+    
+    scatter(new_centroids(:,1),new_centroids(:,2),60,'x','k')
+    xlabel('x1'),ylabel('x2'),title('unlabelled clustering')
+    
 end
