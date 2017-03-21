@@ -20,29 +20,12 @@ xy = [x(:) y(:)];
 
 dec_map = [];
 
-% For each class, I need the mean and covariance...
-% [dat_a_32, mean_a, cov_a] = get_sample_statistics(f32, 1);
-% [dat_b_32, mean_b, cov_b] = get_sample_statistics(f32, 2);
-% [dat_c_32, mean_c, cov_c] = get_sample_statistics(f32, 3);
-% [dat_d_32, mean_d, cov_d] = get_sample_statistics(f32, 4);
-% [dat_e_32, mean_e, cov_e] = get_sample_statistics(f32, 5);
-% [dat_f_32, mean_f, cov_f] = get_sample_statistics(f32, 6);
-% [dat_g_32, mean_g, cov_g] = get_sample_statistics(f32, 7);
-% [dat_h_32, mean_h, cov_h] = get_sample_statistics(f32, 8);
-% [dat_i_32, mean_i, cov_i] = get_sample_statistics(f32, 9);
-% [dat_j_32, mean_j, cov_j] = get_sample_statistics(f32, 10);
-% 
-% mean_vec = [mean_a; mean_b; mean_c; mean_d; mean_e; mean_f; mean_g;
-%                 mean_h; mean_i; mean_j];
-% cov_vec = [cov_a; cov_b; cov_c; cov_d; cov_e; cov_f; cov_g;
-%                 cov_h; cov_i; cov_j];
-
 [f32_mean_vec, f32_cov_vec] = get_sample_statistics(f32,10);
 [f8_mean_vec, f8_cov_vec] = get_sample_statistics(f8,10);
 [f2_mean_vec, f2_cov_vec] = get_sample_statistics(f2,10);
 
 %% MICD Decision Boundary
- 
+%  
 % for i=1:length(xy)
 %     dist_a = sqrt( (xy(i,:) - mean_a) * inv(cov_a) * (xy(i,:) - mean_a)' );
 %     dist_b = sqrt( (xy(i,:) - mean_b) * inv(cov_b) * (xy(i,:) - mean_b)' );
@@ -87,3 +70,4 @@ dec_map = [];
 [f32t_error_matrix, f32t_labels] = get_error_matrix(f32t, f32_mean_vec, f32_cov_vec);
 [f8t_error_matrix, f8t_labels] = get_error_matrix(f8t, f8_mean_vec, f8_cov_vec);
 [f2t_error_matrix, f2t_labels] = get_error_matrix(f2t, f2_mean_vec, f2_cov_vec);
+
