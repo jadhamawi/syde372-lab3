@@ -1,10 +1,10 @@
-function [centroids, labels,iterations] = unlabelled_clustering(dat, num_classes)
-    max_iterations=100;
+function [centroids, labels, prototypes] = unlabelled_clustering(dat, num_classes)
     
+    max_iterations=100;
     dat = dat(1:2,:);
 
-    scatter(dat(1,:),dat(2,:))
-    hold on
+%     scatter(dat(1,:),dat(2,:))
+%     hold on
     
     prototypes = [];
 
@@ -13,9 +13,9 @@ function [centroids, labels,iterations] = unlabelled_clustering(dat, num_classes
         prototypes = [prototypes; dat(1:2,randi(length(dat)))'];
     end
     
-    scatter(prototypes(:,1),prototypes(:,2),40,'x');
-    hold on
-    pause(0.5);
+%     scatter(prototypes(:,1),prototypes(:,2),40,'x');
+%     hold on
+%     pause(0.5);
     
     distances = [];
     labels = [];
@@ -56,13 +56,6 @@ function [centroids, labels,iterations] = unlabelled_clustering(dat, num_classes
             new_centroids = [new_centroids; mean(dat(1:2,dat(3,:)==i)')];
         end
         
-        disp(abs(sum(sum(new_centroids - centroids))));
-        
-        scatter(new_centroids(:,1),new_centroids(:,2),40,'x');
-        hold on
-        pause(0.5);
-
-        %if abs(sum(sum(new_centroids - centroids))) < 0.001
         if new_centroids == centroids;
             break;
         end
@@ -70,4 +63,7 @@ function [centroids, labels,iterations] = unlabelled_clustering(dat, num_classes
     
     disp('Completed k-means clustering in this many iterations');
     disp(iterations)
+    
+%     figure,scatter(dat(1,:),dat(2,:))
+%     hold on, scatter(new_centroids(:,1),new_centroids(:,2),40,'x')
 end

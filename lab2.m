@@ -36,10 +36,20 @@ axis('off')
 
 K=10;
 
-[centroids, labels] = unlabelled_clustering(f32, K);
+[centroids, labels, prototypes] = unlabelled_clustering(f32, K);
 
-figure, aplot(f32);
+%figure, aplot(f32);
+figure, scatter(f32(1,:),f32(2,:));
 hold on
 scatter(centroids(:,1),centroids(:,2),50,'filled');
+title('custom kmeans');
 
+%% using built-in algorithm with initialization as custom kmeans (validation)
+
+dat = f32(1:2,:)';
+[idx, C] = kmeans(dat,10, 'start', prototypes)
+figure, scatter(dat(:,1),dat(:,2))
+hold on
+scatter(C(:,1),C(:,2),50,'filled')
+title('Using built-in kmeans');
 
