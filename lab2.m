@@ -6,10 +6,9 @@
 
 image = readim('cloth.im'); 
 imagesc(image);
-colormap(gray);
 
 load feat.mat;
-aplot(f2);
+aplot(f32);
 xlabel('x1 - horizontal variation'),ylabel('x2 - vertical variation');
 
 %% Labelled Classification
@@ -32,5 +31,15 @@ pixel_classes = classify_image(multf8, f8_mean_vec, f8_cov_vec);
 imagesc(pixel_classes)
 colorbar
 axis('off')
+
+%% Unlabelled clustering
+
+K=10;
+
+[centroids, labels] = unlabelled_clustering(f32, K);
+
+figure, aplot(f32);
+hold on
+scatter(centroids(:,1),centroids(:,2),50,'filled');
 
 
