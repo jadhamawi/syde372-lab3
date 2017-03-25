@@ -43,7 +43,7 @@ figure, aplot(f32);
 hold on
 scatter(centroids(:,1),centroids(:,2),50,'filled');
 xlabel('x1'),ylabel('x2')
-title('custom kmeans');
+title('labelled kmeans results');
 
 %% using built-in algorithm with initialization as custom kmeans (validation)
 
@@ -57,10 +57,10 @@ title('Using built-in kmeans');
 
 %% fuzzy k-means
 
-[centers, u, obj_fun] = fcm(dat,10);
-figure, scatter(dat(:,1),dat(:,2))
-hold on
-scatter(centers(:,1),centers(:,2),50,'filled')
-title('Fuzzy c-means clustering')
+% [centers, u, obj_fun] = fcm(dat,10);
+% figure, scatter(dat(:,1),dat(:,2))
+% hold on
+% scatter(centers(:,1),centers(:,2),50,'filled')
+% title('Fuzzy c-means clustering')
 
 

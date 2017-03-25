@@ -77,4 +77,5 @@ function [centroids, labels, prototypes] = unlabelled_clustering(dat, num_classe
     scatter(new_centroids(:,1),new_centroids(:,2),60,'x','k')
     xlabel('x1'),ylabel('x2'),title('unlabelled clustering')
     
+    
 end
