@@ -1,5 +1,5 @@
 function [centroids, labels, prototypes] = unlabelled_clustering(dat, num_classes)
-    
+    original_dat = dat;
     max_iterations=100;
     dat = dat(1:2,:);
 
@@ -69,11 +69,15 @@ function [centroids, labels, prototypes] = unlabelled_clustering(dat, num_classe
     
     figure
     
+    
     for i = 1:num_classes
-        scatter(dat(1,dat(3,:)==i), dat(2,dat(3,:)==i));
+        scatter(dat(1,dat(3,:)==i), dat(2,dat(3,:)==i),'filled');
         hold on
     end
     
+    aplot(original_dat);
+    
+    hold on
     scatter(new_centroids(:,1),new_centroids(:,2),60,'x','k')
     xlabel('x1'),ylabel('x2'),title('unlabelled clustering')
     
